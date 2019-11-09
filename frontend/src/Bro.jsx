@@ -2,7 +2,7 @@ import React from 'react';
 
 function BroComponent() {
 	return(
-		<div>
+		<div className="BroComponent">
 			<BroButton></BroButton>
 		</div>
 	);
@@ -10,7 +10,7 @@ function BroComponent() {
 
 function BroButton() {
 	return(
-		<button>Bro</button>
+		<button className="BroButton">Bro</button>
 	);
 }
 

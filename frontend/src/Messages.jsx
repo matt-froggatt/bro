@@ -4,7 +4,7 @@ import React from 'react'
 function MessageComponent(props){
 	let messages = props.messages.map((item, index) => {return (<Message>{item}</Message>);});
 	return(
-		<div className="messageComponent">
+		<div className="MessageComponent">
 			{ messages }
 		</div>
 	);
@@ -12,7 +12,7 @@ function MessageComponent(props){
 
 function Message(props){
 	return(
-		<div className="message">
+		<div className="Message">
 			{ props.children }
 		</div>
 	);
