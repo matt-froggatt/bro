@@ -1,3 +1,8 @@
+.message {
+	padding: 10px;
+	background-color: green;
+}
+
 .App {
   text-align: center;
 }

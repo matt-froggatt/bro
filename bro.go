@@ -19,7 +19,6 @@ func main() {
 	buildHandler := http.FileServer(http.Dir("frontend/build"))
 	router.PathPrefix("/").Handler(buildHandler)
 
-	http.HandleFunc("/", helloWorld)
 	if err := http.ListenAndServe(":8080", router); err != nil {
 		log.Fatalln(err)
 	}
