@@ -1,16 +1,17 @@
 import React from 'react';
+import messages from './App';
 
-function BroComponent() {
+function BroComponent(props) {
 	return(
 		<div className="BroComponent">
-			<BroButton></BroButton>
+			<BroButton ws={props.ws} messages={props.messages} setMessages={props.setMessages}></BroButton>
 		</div>
 	);
 }
 
-function BroButton() {
+function BroButton(props) {
 	return(
-		<button className="BroButton">Bro</button>
+		<button className="BroButton" onClick={() => props.setMessages(props.ws, props.messages, "Bro")}>Bro</button>
 	);
 }
 

@@ -2,7 +2,7 @@ import React from 'react'
 
 // TODO use state to display a collection of messages
 function MessageComponent(props){
-	let messages = props.messages.map((item, index) => {return (<Message>{item}</Message>);});
+	let messages = props.messages.map((item, index) => {return (<Message key={index.toString()}>{item}</Message>);});
 	return(
 		<div className="MessageComponent">
 			{ messages }
