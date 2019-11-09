@@ -62,6 +62,7 @@ func main() {
 	router.PathPrefix("/").Handler(buildHandler)
 
 	http.HandleFunc("/ws", handleConnections)
+
 	if err := http.ListenAndServe(":8080", router); err != nil {
 		log.Fatalln(err)
 	}
