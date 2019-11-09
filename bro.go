@@ -20,6 +20,7 @@ func main() {
 	staticHandler := http.StripPrefix("/static/", http.FileServer(http.Dir("frontend/build/static")))
 	router.PathPrefix("/static/").Handler(staticHandler)
 
+	http.HandleFunc("/", helloWorld)
 	if err := http.ListenAndServe(":8080", router); err != nil {
 		log.Fatalln(err)
 	}
