@@ -15,10 +15,8 @@ func helloWorld(w http.ResponseWriter, r *http.Request){
 
 func main() {
 	router := mux.NewRouter()
-	buildHandler := http.FileServer(http.Dir("frontend/build"))
+	buildHandler := http.FileServer(http.Dir("frontend/"))
 	router.PathPrefix("/").Handler(buildHandler)
-	staticHandler := http.StripPrefix("/static/", http.FileServer(http.Dir("frontend/build/static")))
-	router.PathPrefix("/static/").Handler(staticHandler)
 
 	http.HandleFunc("/", helloWorld)
 	if err := http.ListenAndServe(":8080", router); err != nil {
