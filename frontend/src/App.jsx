@@ -3,7 +3,7 @@ import BroComponent from './Bro'
 import './App.css';
 import MessageComponent from './Messages';
 
-let messages = ["Bro", "Bro"];
+let messages = [[false, "Bro"], [true, "Bro"]];
 
 function App() {
   return (

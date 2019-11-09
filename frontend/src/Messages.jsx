@@ -11,8 +11,25 @@ function MessageComponent(props){
 }
 
 function Message(props){
+	let message = (props.children[0]) ? <SentMessage>{ props.children[1] }</SentMessage> : <RecievedMessage>{ props.children[1] }</RecievedMessage>
 	return(
 		<div className="Message">
+			{ message }
+		</div>
+	);
+}
+
+function SentMessage(props){
+	return(
+		<div className="SentMessage">
+			{ props.children }
+		</div>
+	);
+}
+
+function RecievedMessage(props){
+	return(
+		<div className="RecievedMessage">
 			{ props.children }
 		</div>
 	);

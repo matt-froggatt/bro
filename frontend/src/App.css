@@ -8,7 +8,8 @@
 .App {
   text-align: center;
   background-color: black;
-  background-image: "bro.jpg";
+  background-image: url(bro.jpg);
+  background-size: 100% 100%;
 }
 
 .App-logo {
@@ -30,6 +31,29 @@
 
 .MessageComponent {
   height: 90vh;
+}
+
+.Message {
+  padding: 10px;
+  height: 25px;
+}
+
+.RecievedMessage {
+  background-color: black;
+  margin-left: 5%;
+  width: 50px;
+  border-radius: 10px;
+  padding: 10px;
+  float: left;
+}
+
+.SentMessage {
+  background-color: gold;
+  margin-right: 5%;
+  width: 50px;
+  border-radius: 10px;
+  padding: 10px;
+  float: right;
 }
 
 .BroComponent {
