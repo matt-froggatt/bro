@@ -2,9 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/gorilla/websocket"
 	"log"
 	"net/http"
+	"github.com/gorilla/mux"
+
+	"github.com/gorilla/websocket"
 )
 
 var upgrader = websocket.Upgrader{}
@@ -18,7 +20,7 @@ func helloWorld(w http.ResponseWriter, r *http.Request) {
 }
 
 type Message struct {
-	Count string `json:"count"`
+	Message string `json:"message"`
 }
 
 func handleConnections(w http.ResponseWriter, r *http.Request) {
@@ -27,7 +29,9 @@ func handleConnections(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 	defer ws.Close()
+
 	clients[ws] = true
+
 	for {
 		var msg Message
 		if err := ws.ReadJSON(&msg); err != nil {
@@ -53,15 +57,15 @@ func handleMessages() {
 }
 
 func main() {
-	fs := http.FileServer(http.Dir("frontend/build"))
-	http.Handle("/", fs)
+	router := mux.NewRouter()
+	buildHandler := http.FileServer(http.Dir("frontend/build"))
+	router.PathPrefix("/").Handler(buildHandler)
 
 	http.HandleFunc("/ws", handleConnections)
 
-	go handleMessages()
-
-	log.Println("http server started on :8080")
-	if err := http.ListenAndServe(":8080", nil); err != nil {
+	if err := http.ListenAndServe(":8080", router); err != nil {
 		log.Fatalln(err)
 	}
+	go handleMessages()
 }
+
